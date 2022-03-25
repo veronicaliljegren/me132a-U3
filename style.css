@@ -28,12 +28,17 @@ body{
 #wrapper{
     display: flex;
     justify-content: center;
-    background-color: white;
+    align-items: center;
+    background-color: pink;
     flex-direction: column;
-    width: 80vw;
-    height: 90vh;
+    width: 90vw;
+    height: 100vh;
 }
 
+.student{
+    color: aqua;
+    
+}
 .course{
     background-color: wheat;
     flex-direction: column;
