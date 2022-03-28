@@ -66,7 +66,7 @@ function renderStudents(students){
         renderStudent(student);
     });
 }
-
+// funktion som loopar igenom varje student för att addera HTML till webbsidan
 function totalCredits(student){
     let credit = [];
     for (let course of student.courses){
@@ -78,6 +78,8 @@ function totalCredits(student){
     }
     return totalSum;
 }
+
+//funktion som räknar ut totala högskolepoäng för studenterna
 
 function totalCredits(student) {
     let credit = [];
@@ -91,6 +93,8 @@ function totalCredits(student) {
     return totalSum;
 }
 
+//funktion för att hitta kurserna baserat på deras kursId
+
 function findCourseById(student){
     let foundCourses = [];
     for (let i = 0; i < student.courses.length; i++) {
@@ -103,7 +107,7 @@ function findCourseById(student){
     return foundCourses;
 }
 
-//Event listeners
+//Event listeners- som varje gång går igenom funktionerna för att filtrera genom studenterna varje gång en tangent trycks ner
 
 input.addEventListener("keyup", function(){
     let student = findStudentsByLastName();
