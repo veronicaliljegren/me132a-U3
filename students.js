@@ -9,7 +9,7 @@ window.onload = function(){
     document.getElementById("student").value = "";
 };
 
-function findStudentLastName(){
+function findStudentsByLastName(){
     let student = DATABASE.students.filter((student) =>
     student.lastName.toLowerCase().includes(input.value.toLowerCase())
     );
@@ -20,11 +20,11 @@ function findStudentLastName(){
 function renderStudent (student){
     let div = document.createElement("div");
 
-    let studentDiv = document.getElementById("wrapper");
-    studentDiv.appendChild(div);
+    let studentsDiv = document.getElementById("wrapper");
+    studentsDiv.appendChild(div);
 
     let credits = totalCredits(student);
-    let coursesFound = findCourseById(student);
+    let foundCourses = findCourseById(student);
 
     div.classList.add("student");
 
@@ -34,16 +34,16 @@ function renderStudent (student){
     `;
 
     for(let i = 0; i < foundCourses.length;i++){
-        let foundCourses = foundCourses[i];
+        let foundCourse = foundCourses[i];
         // let passedCredits = DATABASE.student[i].courses[i].passedCredits;
 
         let titleCourse = document.createElement("div");
         titleCourse.classList.add("course");
         div.appendChild(titleCourse);
 
-        titleCourse.innerHTML = coursesFound.title;
+        titleCourse.innerHTML = foundCourse.title;
 
-        for(let i = 0; i < coursesFound.length; i++){
+        for(let i = 0; i < foundCourses.length; i++){
             let student = DATABASE.students[i];
         }
     let passedCredits = student.courses[i].passedCredits;
@@ -51,10 +51,10 @@ function renderStudent (student){
     let year = student.courses[i].started.year;
 
     let courseInfo = document.createElement("p");
-    courseTitle.appendChild(courseInfo);
+    titleCourse.appendChild(courseInfo);
     courseInfo.innerText = semester + "" + year + "" + "(" + passedCredits + "" + "credits" + ")";
 
-    if (passedCredits == coursesFound.totalCredits){
+    if (passedCredits == foundCourse.totalCredits){
         let course = courseInfo.parentElement;
         course.style.backgroundColor = "blue";
     }
@@ -90,3 +90,31 @@ function totalCredits(student) {
     }
     return totalSum;
 }
+
+function findCourseById(student){
+    let foundCourses = [];
+    for (let i = 0; i < student.courses.length; i++) {
+        foundCourses.push(
+            DATABASE.courses.find((courses) => {
+                return courses.courseId == student.courses[i].courseId;
+            })
+        );
+    }
+    return foundCourses;
+}
+
+//Event listeners
+
+input.addEventListener("keyup", function(){
+    let student = findStudentsByLastName();
+    let studentsDiv = document.getElementById("student");
+
+    studentsDiv.innerHTML = "";
+    renderStudents(student);
+
+    if (input.value == 0) {
+        studentsDiv.innerHTML = "";
+    }
+});
+
+
