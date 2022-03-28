@@ -1,36 +1,40 @@
 "use strict"
 //Global variabel
-let input = document.getElementById("searchbox");
+let input = document.getElementById("student");
 
 // Funktioner 
 // Funktioner för att rensa searchboxen när sidan uppdateras
 
 window.onload = function(){
-    document.getElementById("searchbox").value = "";
+    document.getElementById("student").value = "";
 };
 
 function findStudentLastName(){
     let student = DATABASE.students.filter((student) =>
-    
-    student,lastName.toLowerCase().includes(input.value.toLowerCase())
+    student.lastName.toLowerCase().includes(input.value.toLowerCase())
     );
     return student;
 }
 //Funktion för att "skapa" en student och dess information
 
 function renderStudent (student){
-    let div = document.createElement ("div");
+    let div = document.createElement("div");
+
+    let studentDiv = document.getElementById("wrapper");
+    studentDiv.appendChild(div);
 
     let credits = totalCredits(student);
-
     let coursesFound = findCourseById(student);
 
     div.classList.add("student");
 
-    div.innerHTML = `<div>${student.firstName} ${student.lastName} (Total: ${credits} credit) </div><div id=courses> Courses:</div>`;
+    div.innerHTML =`
+    <div>${student.firstName} ${student.lastName} (Total: ${credits} credit) </div>
+    <div id=courses> Courses:</div>
+    `;
 
     for(let i = 0; i < foundCourses.length;i++){
-        let foundCourses = foundCourses [i];
+        let foundCourses = foundCourses[i];
         // let passedCredits = DATABASE.student[i].courses[i].passedCredits;
 
         let titleCourse = document.createElement("div");
@@ -42,7 +46,7 @@ function renderStudent (student){
         for(let i = 0; i < coursesFound.length; i++){
             let student = DATABASE.students[i];
         }
-    let creditsPassed = student.courses[i].creditsPassed;
+    let passedCredits = student.courses[i].passedCredits;
     let semester = student.courses[i].started.semester;
     let year = student.courses[i].started.year;
 
@@ -57,5 +61,32 @@ function renderStudent (student){
   }
 }
 
+function renderStudents(students){
+    students.forEach((student) => {
+        renderStudent(student);
+    });
+}
 
+function totalCredits(student){
+    let credit = [];
+    for (let course of student.courses){
+        credit.push(course.passedCredits);
+    }
+    let totalSum = 0;
+    for(let i = 0; i < credit.length; i++){
+        totalSum += credit[i];
+    }
+    return totalSum;
+}
 
+function totalCredits(student) {
+    let credit = [];
+    for (let course of student.courses){
+        credit.push(course.passedCredits);
+    }
+    let totalSum = 0;
+    for (let i = 0; i < credit.length; i++) {
+        totalSum += credit[i];
+    }
+    return totalSum;
+}
