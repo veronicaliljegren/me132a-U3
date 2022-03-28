@@ -1,35 +1,61 @@
-"use strict";
-// Väljer element baserat på vad användaren sökt på
-let selectElement = (selectElement) => {
-    return document.querySelector(selectElement);
+"use strict"
+//Global variabel
+let input = document.getElementById("searchbox");
+
+// Funktioner 
+// Funktioner för att rensa searchboxen när sidan uppdateras
+
+window.onload = function(){
+    document.getElementById("searchbox").value = "";
+};
+
+function findStudentLastName(){
+    let student = DATABASE.students.filter((student) =>
+    
+    student,lastName.toLowerCase().includes(input.value.toLowerCase())
+    );
+    return student;
 }
+//Funktion för att "skapa" en student och dess information
 
-//Rensar innehållet efter sökresultatet
-let clearResults = () => {
-    selectElement(".student-result").innerHTML = "";
-}
+function renderStudent (student){
+    let div = document.createElement ("div");
 
-function GetResultsStudent (){
-    let search = selectElement("#student").value;
-    //Rensar innehållet vid varje "anrop" för att inte ha kvar gammal sökning
-    clearResults();
+    let credits = totalCredits(student);
 
+    let coursesFound = findCourseById(student);
 
-//Om input har har ett högre värde än 0 kör denna koden
-    if ( search.length > 0) {
-     for (let i = 0; i < DATABASE.students.length; i++){
-          if( DATABASE.students[i].lastName.toLocaleLowerCase().includes(search.toLocaleLowerCase())){
-               selectElement(".student-result").innerHTML += `
-              <div class = "box">
-              <h2>${DATABASE.students[i].firstName} ${DATABASE.students[i].lastName} (total:)</h2>
-              <p> Courses </p>
-              <div id = "grid"></div>
-              <div id = "box"></div>
-              </div>
-            `;
-            }
+    div.classList.add("student");
+
+    div.innerHTML = `<div>${student.firstName} ${student.lastName} (Total: ${credits} credit) </div><div id=courses> Courses:</div>`;
+
+    for(let i = 0; i < foundCourses.length;i++){
+        let foundCourses = foundCourses [i];
+        // let passedCredits = DATABASE.student[i].courses[i].passedCredits;
+
+        let titleCourse = document.createElement("div");
+        titleCourse.classList.add("course");
+        div.appendChild(titleCourse);
+
+        titleCourse.innerHTML = coursesFound.title;
+
+        for(let i = 0; i < coursesFound.length; i++){
+            let student = DATABASE.students[i];
         }
+    let creditsPassed = student.courses[i].creditsPassed;
+    let semester = student.courses[i].started.semester;
+    let year = student.courses[i].started.year;
+
+    let courseInfo = document.createElement("p");
+    courseTitle.appendChild(courseInfo);
+    courseInfo.innerText = semester + "" + year + "" + "(" + passedCredits + "" + "credits" + ")";
+
+    if (passedCredits == coursesFound.totalCredits){
+        let course = courseInfo.parentElement;
+        course.style.backgroundColor = "blue";
     }
+  }
 }
 
-selectElement("#student").addEventListener("keyup", GetResultsStudent);
+
+
