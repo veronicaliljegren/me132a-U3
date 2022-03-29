@@ -1,23 +1,29 @@
 body{
     margin: 50px;
-    background-color: aliceblue;
-    height: 100vh;
+    background-color: rgb(240, 234, 210);
+    width: 90vw;
 
 }
 
-.heading{
+#searchbox{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     height: 40px;
-    width: 500px;
     align-items: center;
-    background-color: whitesmoke;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.heading{
     padding: 5px;
-    font-family: 'Courier New', Courier, monospace;
+    font-size: 30px;
+    font-family: 'Titillium Web', sans-serif;
 }
 
 #student{
     padding: 5px;
+    width: 450px;
+    align-items: center;
+
 }
 
 #student:hover{
@@ -26,26 +32,57 @@ body{
 
 
 #wrapper{
-   margin: 30px;
-   
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 1;
 
 }
 
 .student{
     color: black;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: 'PT Sans', sans-serif;
     
 } 
 .course{
-    background-color: wheat;
-    flex-direction: column;
-    border: solid 1px darkblue;
+    background-color: rgb(221, 229, 182);
+    color: rgb(47, 47, 47);
+    border: solid 1px black;
     padding: 10px;
     margin-top: 10px;
+    border-radius: 10px;
    
 } 
- 
 
+div.student{
+    background-color: rgb(250, 248, 240);
+    padding: 10px;
+    border-radius: 10px;
+    border: black solid 1px;
+    padding: 10px;
+    margin: 30px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    text-align: center;   
+ 
+    
+}
+#course{
+    font-size: 20px;
+    font-family: 'PT Sans', sans-serif;
+
+}
+
+#student-top{
+    font-size: 20px;
+    font-family: 'PT Sans', sans-serif;
+}
+
+#semester{
+    font-family: 'Courier New', Courier, monospace;
+
+    
+}
 
 
 

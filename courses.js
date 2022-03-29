@@ -32,14 +32,14 @@ function renderCourse(course) {
 
     divCourse.innerHTML =`
     <div>${course.title} Total ${course.totalCredits} credits </div>
-    <div id=teacher>Teacher:</div>
+    <div id=teacher>Teacher: </div>
     `;
 }
 
 function allTeacherInfo(id) {
-    let course = DATABSE.courses[i];
+    let course = DATABASE.courses[i];
     let teachersNames = allTeachers.map((teacher) =>
-    teacher.firstName + "" + teacher.lastName + "" + `(${teachers.post})`);
+    teacher.firstName + " " + teacher.lastName + " " + `(${teachers.post})`);
     let teachers = [];
 
     for (let i = 0; i < teachersNames.length; i++) {
@@ -48,7 +48,7 @@ function allTeacherInfo(id) {
             let info = div.innerHTML = `<p>${teachersNames[i]} </p>`
         }
     }
-    return teachers.toString().split(",").join("");
+    return teachers.toString().split(",").join(" ");
 }
 
 
@@ -62,14 +62,14 @@ function renderCourses(courses){
 //function som hittar kursansvarig
 function courseResponsible(id) {
     let course = DATABASE.courses[i];
-    let teachersNames = allTeachers.map((teacher) => teacher.firstName + " + teacher.lastName + " +`(${teacher.post})`);
+    let teachersNames = allTeachers.map((teacher) => teacher.firstName + " " + teacher.lastName + " " +`(${teacher.post})`);
     let res = course.courseResponsible;
     return teachersNames[res];
 }
 //info om lärarna
 function allTeacherInfo(id){
     let course = DATABASE.courses[i];
-    let teachersNames = allTeachers.map((teacher) => teacher.firstName + "" + teacher.lastName + "" + `(${teacher.post})`);
+    let teachersNames = allTeachers.map((teacher) => teacher.firstName + " " + teacher.lastName + " " + `(${teacher.post})`);
     let teachers = [];
 
     for (let i = 0; i < teachersNames.length; i++){
@@ -79,7 +79,7 @@ function allTeacherInfo(id){
                 teachers.push(info);
         }
     }
-    return teachers.toString().split(",").join("");
+    return teachers.toString().split(",").join(" ");
 }
 
 //student info
@@ -89,7 +89,7 @@ function allTeacherInfo(id){
    function allCourseTeachers (id) {
     let course = DATABASE.courses[i];
     let teachersNames = allTeachers.map((teacher) =>
-    teacher.firstName + "" + teacher.lastName + "" + `(${teacher.post})`);
+    teacher.firstName + " " + teacher.lastName + " " + `(${teacher.post})`);
     let teachers = [];
     for (let i = 0; i < teachers.length; i++){
         if(course.teachers.some((value) => value == i)){
@@ -133,7 +133,7 @@ function allCourseStudents(id){
 
 // //funktion för att hitta studenterna för varje kurs
 
-// function allCOurseStudents(id) {
+// function allCurseStudents(id) {
 //     let courseId = DATABASE.courses[i].courseId;
 //     let students = [];
 //     for (let student of allStudents)

@@ -29,8 +29,9 @@ function renderStudent (student){
     div.classList.add("student");
 
     div.innerHTML =`
-    <div>${student.firstName} ${student.lastName} (Total: ${credits} credit) </div>
-    <div id=course> Courses:</div>
+    <div id= student-top>${student.firstName} ${student.lastName} <br>
+    (Total: ${credits} credit) <br> Courses:</div>
+    
     `;
 
     for(let i = 0; i < foundCourses.length;i++){
@@ -52,11 +53,12 @@ function renderStudent (student){
 
     let courseInfo = document.createElement("p");
     titleCourse.appendChild(courseInfo);
-    courseInfo.innerText = semester + "" + year + "" + "(" + passedCredits + "" + "credits" + ")";
+    courseInfo.innerText = semester + " " + year + " " + " (" + passedCredits + " " + "credits" + ")";
 
     if (passedCredits == foundCourse.totalCredits){
         let course = courseInfo.parentElement;
-        course.style.backgroundColor = "lightpink";
+        course.style.backgroundColor = "rgb(173, 193, 120)";
+        course.style.color ="black";
     }
   }
 }
