@@ -20,9 +20,8 @@ function findCoursesByTitle() {
     return course;
 }
 
-//funktion för att skapa kursen med information 
-
-function renderCourse(course) {
+//funktion för att skapa div med kursens information 
+function renderCourse(courses) {
     let divCourse = document.createElement("div");
 
     let courseDiv = document.getElementById("student-result");
@@ -31,25 +30,25 @@ function renderCourse(course) {
     divCourse.classList.add("course")
 
     divCourse.innerHTML =`
-    <div>${course.title} Total ${course.totalCredits} credits </div>
+    <div>${courses.title} Total ${courses.totalCredits} credits </div>
     <div id=teacher>Teacher: </div>
     `;
 }
 
-function allTeacherInfo(id) {
-    let course = DATABASE.courses[i];
-    let teachersNames = allTeachers.map((teacher) =>
-    teacher.firstName + " " + teacher.lastName + " " + `(${teachers.post})`);
-    let teachers = [];
+// function allTeacherInfo(courses) {
+//     let course = DATABASE.courses[i];
+//     let teachersNames = allTeachers.map((teacher) =>
+//     teacher.firstName + " " + teacher.lastName + " " + `(${teachers.post})`);
+//     let teachers = [];
 
-    for (let i = 0; i < teachersNames.length; i++) {
-        if(course.teachers.some((value) => value == i)){
-            let div = document.createElement("div");
-            let info = div.innerHTML = `<p>${teachersNames[i]} </p>`
-        }
-    }
-    return teachers.toString().split(",").join(" ");
-}
+//     for (let i = 0; i < teachersNames.length; i++) {
+//         if(courses.teachers.some((value) => value == i)){
+//             let div = document.createElement("div");
+//             let info = div.innerHTML = `<p>${teachersNames[i]} </p>`
+//         }
+//     }
+//     return teachers.toString().split(",").join(" ");
+// }
 
 
 //funktion som ska gå igenom varje kurs och lägger till HTML på webbplatsen
@@ -60,39 +59,68 @@ function renderCourses(courses){
 }
 
 //function som hittar kursansvarig
-function courseResponsible(id) {
-    let course = DATABASE.courses[i];
-    let teachersNames = allTeachers.map((teacher) => teacher.firstName + " " + teacher.lastName + " " +`(${teacher.post})`);
-    let res = course.courseResponsible;
-    return teachersNames[res];
-}
-//info om lärarna
-function allTeacherInfo(id){
-    let course = DATABASE.courses[i];
-    let teachersNames = allTeachers.map((teacher) => teacher.firstName + " " + teacher.lastName + " " + `(${teacher.post})`);
-    let teachers = [];
-
-    for (let i = 0; i < teachersNames.length; i++){
-        if(course.teachers.some((value) => value == i)) {
-            let div = document.createElement("div");
-            let info = div.innerHTML = `<p>${teachersNames[i]}</p>`
-                teachers.push(info);
+function findResponsible (courses) {
+    let teacherBox = []
+    for (let i = 0; i < DATABASE.teachers.length; i++) {
+        let div = document.createElement ("div")
+        if (DATABASE.teachers[i].teacherId == courses.courseResponsible){
+            let text = div.innerHTML =`
+            <h2>${DATABASE.teachers[i].firstName} ${DATABASE.teachers[i].lastName} (${DATABASE.teachers[i].post})</h2>`
+            teacherBox.push(text);
         }
     }
-    return teachers.toString().split(",").join(" ");
+
+    return teacherBox.toString().split(" , ").join("");
 }
+
+//info om lärarna
+function findTeachers (courses){
+    let teacherBox = []
+    for (let i = 0; i < DATABASE.teachers.length; i++){
+        let div = document.createElement ("div")
+        if (DATABASE.teachers[i].teacherId == courses.teachers[0]) {
+            let text = div.innerHTML = `
+            <h4>${teachers[i].firstName} ${allTeachers[i].lastName}</h4>`
+            teacherBox.push(text);
+        } else if (DATABASE.teachers[i].teacherId == courses.teachers[1]) {
+            let text = div.innerHTML = `
+            <h4>${teachers[i].firstName} ${allTeachers[i].lastName}</h4>`
+            teacherBox.push(text);
+        } else if (DATABASE.teachers[i].teacherId == courses.teachers[2]) {
+            let text = div.innerHTML = `
+            <h4>${teachers[i].firstName} ${allTeachers[i].lastName}</h4>`
+            teacherBox.push(text);
+        }
+    }
+    return teacherBox.toString().split(".").join("");
+}
+
+
+//     let course = DATABASE.courses[i];
+//     let teachersNames = allTeachers.map((teacher) => teacher.firstName + " " + teacher.lastName + " " + `(${teacher.post})`);
+//     let teachers = [];
+
+//     for (let i = 0; i < teachersNames.length; i++){
+//         if(course.teachers.some((value) => value == i)) {
+//             let div = document.createElement("div");
+//             let info = div.innerHTML = `<p>${teachersNames[i]}</p>`
+//                 teachers.push(info);
+//         }
+//     }
+//     return teachers.toString().split(",").join(" ");
+// }
 
 //student info
 
 
    //funktion för att hitta lärare
-   function allCourseTeachers (id) {
-    let course = DATABASE.courses[i];
+   function allCourseTeachers (course) {
+    let courses = DATABASE.courses[i];
     let teachersNames = allTeachers.map((teacher) =>
     teacher.firstName + " " + teacher.lastName + " " + `(${teacher.post})`);
     let teachers = [];
     for (let i = 0; i < teachers.length; i++){
-        if(course.teachers.some((value) => value == i)){
+        if(courses.teachers.some((value) => value == i)){
             let div = document.createElement("div");
             let content = div.innerHTML = `<p>${teachersNames[i]}</p>`
              teachers.push(content);
@@ -102,16 +130,18 @@ function allTeacherInfo(id){
 }
 
 //funktion för att hitta studenterna för varje kurs
-function allCourseStudents(id){
-    let courseId = DATABASE.courses[i].courseId;
-    let students = [];
-        for (let student of allStudents){
-            console.log(courses.courseId, courseId)
-            if(courses.courseId == courseId){
-                students.push(student);
-            }
-        }
-}
+
+
+// function allCourseStudents(course){
+//     let courseId = DATABASE.courses[i].courseId;
+//     let students = [];
+//         for (let student of allStudents){
+//             console.log(course.courseId, courseId)
+//             if(course.courseId == courseId){
+//                 students.push(student);
+//             }
+//         }
+// }
 
 
 //     for (let i = 0; i < foundTeachers.length; i++){
@@ -139,7 +169,7 @@ function allCourseStudents(id){
 //     for (let student of allStudents)
 // }
 
-//event-listener för att köra funktionen och filtrera genom kurserna varje gång sök trycks
+// event-listener för att köra funktionen och filtrera genom kurserna varje gång sök trycks
 inputCourse.addEventListener("keyup", function() {
     let course = findCoursesByTitle();
     let coursesDiv = document.getElementById("student-result");
@@ -153,3 +183,4 @@ inputCourse.addEventListener("keyup", function() {
 
     }
 });
+
