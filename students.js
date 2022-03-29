@@ -30,7 +30,7 @@ function renderStudent (student){
 
     div.innerHTML =`
     <div>${student.firstName} ${student.lastName} (Total: ${credits} credit) </div>
-    <div id=courses> Courses:</div>
+    <div id=course> Courses:</div>
     `;
 
     for(let i = 0; i < foundCourses.length;i++){
@@ -56,7 +56,7 @@ function renderStudent (student){
 
     if (passedCredits == foundCourse.totalCredits){
         let course = courseInfo.parentElement;
-        course.style.backgroundColor = "blue";
+        course.style.backgroundColor = "lightpink";
     }
   }
 }

@@ -1,12 +1,12 @@
 body{
     margin: 50px;
     background-color: aliceblue;
-    color: black;
-    width: 100vw;
+    /* color: black; */
+    height: 100vw;
 
 }
 
-.searchbox{
+.header{
     display: flex;
     flex-direction: row;
     height: 40px;
@@ -17,22 +17,29 @@ body{
     font-family: 'Courier New', Courier, monospace;
 }
 
-#box{
+#courses{
     padding: 5px;
 }
 
-#box:hover{
+#courses:hover{
     background-color: lightyellow;
 }
 
-#wrapper{
+/* #wrapper{
+   
+    width: 90vw;
+    height: 100vh;
+} */
+
+#student-result{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: pink;
+    background-color: beige;
     flex-direction: column;
-    width: 90vw;
-    height: 100vh;
+    background-color: aquamarine;
+    margin: 20px;
+
 }
 
 .student{
@@ -40,8 +47,10 @@ body{
     
 }
 .course{
-    background-color: wheat;
+    background-color: aquamarine;
+    /* background-color: wheat; */
     flex-direction: column;
+    gap: 5px;
 }
 
 
