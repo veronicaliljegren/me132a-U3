@@ -65,7 +65,7 @@ function renderCourses(courses){
         }
     }
 
-    return responsibleBox.toString().split(" , ").join("");
+    return responsibleBox.toString().split(",").join("");
  }
 
  //info om lärarna
@@ -87,7 +87,7 @@ function infoTeacher (courses){
                 teacherBox.push(text);
             }
          }
-            return teacherBox.toString().split(".").join("");
+            return teacherBox.toString().split(",").join("");
         }
     
 
@@ -157,7 +157,7 @@ function findStudents(courses){
 //     let courseId = DATABASE.courses[i].courseId;
 //     let students = [];
 //         for (let student of allStudents){
-//             console.log(course.courseId, courseId)
+//             console.log(course.courseId. courseId)
 //             if(course.courseId == courseId){
 //                 students.push(student);
 //             }
