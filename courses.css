@@ -65,6 +65,20 @@ div.course{
     
 }
 
+.done{
+    color: goldenrod;
+    border: solid black 1px;
 
+}
 
+.not-done{
+    color: black;
+    border: solid black 1px;
 
+}
+
+/* 
+h2{
+    color: black;
+    font-family: 'Courier New', Courier, monospace;
+} */
