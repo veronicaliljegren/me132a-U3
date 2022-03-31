@@ -8,12 +8,15 @@ window.onload = function(){
     document.getElementById("student").value = "";
 };
 
+// Funktion som gör det möjligt att skriva både stora och små bokstäver
 function findStudentsByLastName(){
     let student = DATABASE.students.filter((student) =>
     student.lastName.toLowerCase().includes(input.value.toLowerCase())
     );
     return student;
 }
+
+
 
 //Funktion för att "skapa" en student och dess information
 
@@ -61,6 +64,7 @@ function renderStudent (student){
     }
   }
 }
+
 
 function renderStudents(students){
     students.forEach((student) => {

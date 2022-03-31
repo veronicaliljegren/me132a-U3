@@ -51,13 +51,14 @@ body{
     background-color: rgb(173, 193, 120);
     color: black;
     border: solid black 1px;
-
+    border-radius: 10px;
 }
 
 .not-done{
     color: rgb(47, 47, 47);
     border: solid black 1px;
     background-color: rgb(255, 252, 242);
+    border-radius: 10px;
 }
 
 #courseTitle{
