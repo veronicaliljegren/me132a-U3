@@ -16,8 +16,6 @@ function findStudentsByLastName(){
     return student;
 }
 
-
-
 //Funktion för att "skapa" en student och dess information
 
 function renderStudent (student){
@@ -128,3 +126,13 @@ input.addEventListener("keyup", function(){
 });
 
 
+//(Första extrauppgiften men har inte tid att slutföra och placera den rätt, inte heller de andra extrauppgifterna...)
+// DATABASE.students.sort(function(a, b){
+//     if(a.lastName > b.lastName){
+//       return 1;
+//     }
+//     if(a.lastName < b.lastName){
+//       return -1;
+//     }
+//     return 0;
+//   });
