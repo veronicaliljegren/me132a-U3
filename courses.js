@@ -30,11 +30,14 @@ function renderCourse(courses) {
     divCourse.classList.add("course")
 
     divCourse.innerHTML =`
-    <div>${courses.title} <br> 
-    Total ${courses.totalCredits} credits </div>
+    <div id = container>
+    <div id=courseTitle> Courses Title:
+    <h4> ${courses.title} (${courses.totalCredits} credits) </h4></div>
     <div id=teacher>Teacher: ${infoTeacher(courses)}</div> 
-    <div id=courseResponsible> Course Responsible: ${findResponsible(courses)}</div>
-    <div id=students>Students: ${findStudents(courses)}</div>
+    <div id=courseResponsible> Course Responsible:${findResponsible(courses)}</div>
+    </div>
+    <div id=students>Students: <br> ${findStudents(courses)}</div>
+    
     `;
 }
 
@@ -60,7 +63,7 @@ function renderCourses(courses){
         let div = document.createElement ("div")
          if (DATABASE.teachers[i].teacherId == courses.courseResponsible){
             let text = div.innerHTML =`
-            <h2>${DATABASE.teachers[i].firstName} ${DATABASE.teachers[i].lastName} (${DATABASE.teachers[i].post})</h2>`
+            <h4>${DATABASE.teachers[i].firstName} ${DATABASE.teachers[i].lastName} (${DATABASE.teachers[i].post})</h4>`
              responsibleBox.push(text);
         }
     }
@@ -101,12 +104,12 @@ function findStudents(courses){
         for (let x = 0; x < DATABASE.students[i].courses.length; x++){
             if (DATABASE.students[i].courses[x].courseId == courses.courseId && DATABASE.students[i].courses[x].passedCredits == courses.totalCredits){
                 let text = div.innerHTML =`
-                <div class="done"><h4>${DATABASE.students[i].firstName} ${DATABASE.students[i].lastName} (${DATABASE.students[i].courses[x].passedCredits} Credits)</h4>
+                <div class="done"><h4>${DATABASE.students[i].firstName} ${DATABASE.students[i].lastName} <br>(${DATABASE.students[i].courses[x].passedCredits} Credits)</h4>
                 <p>${DATABASE.students[i].courses[x].started.semester} ${DATABASE.students[i].courses[x].started.year}</p></div>`
                 studentBox.push(text);
             }else if (DATABASE.students[i].courses[x].courseId == courses.courseId && DATABASE.students[i].courses[x].passedCredits < courses.totalCredits){
                 let text = div.innerHTML =`
-                <div class="not-done"><h4>${DATABASE.students[i].firstName} ${DATABASE.students[i].lastName} (${DATABASE.students[i].courses[x].passedCredits} Credits)</h4>
+                <div class="not-done"><h4>${DATABASE.students[i].firstName} ${DATABASE.students[i].lastName} <br> (${DATABASE.students[i].courses[x].passedCredits} Credits)</h4>
                 <p>${DATABASE.students[i].courses[x].started.semester} ${DATABASE.students[i].courses[x].started.year}</p></div>`
                 studentBox.push(text);
             }
@@ -157,7 +160,7 @@ function findStudents(courses){
 //     let courseId = DATABASE.courses[i].courseId;
 //     let students = [];
 //         for (let student of allStudents){
-//             console.log(course.courseId. courseId)
+//             console.log(course.courseId courseId)
 //             if(course.courseId == courseId){
 //                 students.push(student);
 //             }

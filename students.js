@@ -2,7 +2,6 @@
 //Global variabel
 let input = document.getElementById("student");
 
-// Funktioner 
 // Funktioner för att rensa searchboxen när sidan uppdateras
 
 window.onload = function(){
@@ -15,6 +14,7 @@ function findStudentsByLastName(){
     );
     return student;
 }
+
 //Funktion för att "skapa" en student och dess information
 
 function renderStudent (student){
@@ -31,12 +31,10 @@ function renderStudent (student){
     div.innerHTML =`
     <div id= student-top>${student.firstName} ${student.lastName} <br>
     (Total: ${credits} credit) <br> Courses:</div>
-    
     `;
 
     for(let i = 0; i < foundCourses.length;i++){
         let foundCourse = foundCourses[i];
-        // let passedCredits = DATABASE.student[i].courses[i].passedCredits;
 
         let titleCourse = document.createElement("div");
         titleCourse.classList.add("course");
@@ -47,6 +45,7 @@ function renderStudent (student){
         for(let i = 0; i < foundCourses.length; i++){
             let student = DATABASE.students[i];
         }
+
     let passedCredits = student.courses[i].passedCredits;
     let semester = student.courses[i].started.semester;
     let year = student.courses[i].started.year;
@@ -68,6 +67,7 @@ function renderStudents(students){
         renderStudent(student);
     });
 }
+
 // funktion som loopar igenom varje student för att addera HTML till webbsidan
 function totalCredits(student){
     let credit = [];

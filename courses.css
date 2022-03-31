@@ -2,6 +2,7 @@ body{
     margin: 50px;
     background-color: rgb(240, 234, 210);
     width: 90vw;
+    font-family: 'PT Sans', sans-serif;
 }
 
 #searchbox{
@@ -10,8 +11,9 @@ body{
     height: 40px;
     align-items: center;
     justify-content: center;
-    margin-bottom: 20px;
+    margin-bottom: 50px;
 }
+
 .header{
     padding: 5px;
     font-size: 30px;
@@ -32,22 +34,11 @@ body{
 #student-result{
     display: flex;
     flex-direction: column;
-
-/* 
-
-    display: grid;
-    grid-template-columns:  repeat(4, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    gap: 10px;
-    text-align: center; */
 }
 
 .course{
     background-color: rgb(221, 229, 182);
     color:  rgb(47, 47, 47);
-    /* flex-direction: row;
-    flex-shrink: 0; */
-    /* gap: 5px; */
     margin-top: 10px;
     padding: 10px;
     border-radius: 10px;
@@ -56,29 +47,57 @@ body{
 
 }
 
-div.course{
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    gap: 10px;
-    text-align: center;   
-    
-}
-
 .done{
-    color: goldenrod;
+    background-color: rgb(173, 193, 120);
+    color: black;
     border: solid black 1px;
 
 }
 
 .not-done{
-    color: black;
+    color: rgb(47, 47, 47);
     border: solid black 1px;
-
+    background-color: rgb(255, 252, 242);
 }
 
-/* 
-h2{
-    color: black;
-    font-family: 'Courier New', Courier, monospace;
-} */
+#courseTitle{
+    font-family: 'PT Sans', sans-serif;
+}
+
+#teacher{
+    font-family: 'PT Sans', sans-serif;
+    
+}
+
+#courseResponsible{
+    font-family: 'PT Sans', sans-serif;
+}
+
+#students{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 10px;
+    text-align: center;   
+    font-family: 'PT Sans', sans-serif;
+}
+ 
+p{
+    font-family: 'Amatic SC', cursive;
+    font-size: 20px;
+}
+
+#container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 20px;
+    text-align: center;
+}
+
+div#courseResponsible > h4{
+    background-color: rgb(231, 207, 205);
+    height: 25px;
+    border-radius: 10px;
+    border: solid 1px black;
+    
+}
